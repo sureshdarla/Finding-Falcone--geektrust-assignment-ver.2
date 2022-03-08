@@ -1,0 +1,38 @@
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.planets-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vehicles {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.planets-options {
+  margin: 10px;
+}
+.form-elements-alignment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+.total-number {
+  color: red;
+  font-family: 'Roboto';
+  font-weight: 500;
+}
