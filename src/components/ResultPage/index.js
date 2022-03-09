@@ -7,9 +7,15 @@ class ResultPage extends Component {
   }
 
   render() {
+    console.log('Result page is rendered')
     return (
-      <div>
-        <button onClick={this.onClickGotoHomePage}>start again</button>
+      <div className="congrats-message-container">
+        <div>
+          <h1>Congratulations, You made it.</h1>
+          <button type="button" onClick={this.onClickGotoHomePage}>
+            start again
+          </button>
+        </div>
       </div>
     )
   }

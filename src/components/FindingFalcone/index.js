@@ -1,6 +1,9 @@
+import {Redirect, useHistory} from 'react-router-dom'
+
 import {Component} from 'react'
 
 import ResultPage from '../ResultPage'
+
 //  import Planets from './components/Planets'
 //  import Vehicle from './components/Vehicle'
 
@@ -127,7 +130,11 @@ class FindingFalcone extends Component {
   renderPlanet2 = (planets, planetIndex) => (
     //    const {planets} = this.state
     <div className="planet-options">
-      <select data-planet={planetIndex} onChange={this.onSelectingSecondPlanet}>
+      <select
+        className="planets-options"
+        data-planet={planetIndex}
+        onChange={this.onSelectingSecondPlanet}
+      >
         <option>select</option>
         {planets.map(eachPlanet => (
           <option data-planet={planetIndex}>{eachPlanet.name}</option>
@@ -155,7 +162,11 @@ class FindingFalcone extends Component {
   renderPlanet3 = (planets, planetIndex) => (
     //    const {planets} = this.state
     <div className="planet-options">
-      <select data-planet={planetIndex} onChange={this.onSelectingThirdPlanet}>
+      <select
+        className="planets-options"
+        data-planet={planetIndex}
+        onChange={this.onSelectingThirdPlanet}
+      >
         <option>select</option>
         {planets.map(eachPlanet => (
           <option data-planet={planetIndex}>{eachPlanet.name}</option>
@@ -180,7 +191,11 @@ class FindingFalcone extends Component {
   renderPlanet4 = (planets, planetIndex) => (
     //    const {planets} = this.state
     <div className="planet-options">
-      <select data-planet={planetIndex} onChange={this.onSelectingFourthPlanet}>
+      <select
+        className="planets-options"
+        data-planet={planetIndex}
+        onChange={this.onSelectingFourthPlanet}
+      >
         <option>select</option>
         {planets.map(eachPlanet => (
           <option>{eachPlanet.name}</option>
@@ -268,8 +283,20 @@ class FindingFalcone extends Component {
     )
     const data = await response.json()
     console.log(data)
-    const {history} = this.props
-    history.push('/result')
+    if (data.status === 'success') {
+      //   const history = useHistory()
+      //   history.push({
+      //     pathname: '/result',
+
+      //     state: {detail: data},
+      //   })
+      const {history} = this.props
+      history.push('/result')
+    }
+    return <Redirect to="/" />
+
+    // const {history} = this.props
+    // history.push('/result')
   }
 
   render() {
@@ -287,40 +314,42 @@ class FindingFalcone extends Component {
     return (
       <div>
         <form
-          className="from-container form-elements-alignment"
+          className="from-container form-elements-alignment "
           onSubmit={this.onSubmitFindFalcone}
         >
-          <h1>Hellelujah</h1>
-          <div className="planets-container">
-            <div className="planets-options">
-              {this.renderPlanet1(planets, 0)}
-              {isFirstPlanetSelected
-                ? this.renderVehicles(vehiclesData, 'vehicle1', 0)
-                : null}
-            </div>
-            <div>
-              {this.renderPlanet2(planets, 1)}
-              {isSecondPlanetSelected
-                ? this.renderVehicles(vehiclesData, 'vehicle2', 1)
-                : null}
-            </div>
-            <div>
-              {this.renderPlanet3(planets, 2)}
-              {isThirdPlanetSelected
-                ? this.renderVehicles(vehiclesData, 'vehicle3', 2)
-                : null}
-            </div>
-            <div>
-              {this.renderPlanet4(planets, 3)}
-              {isFourthPlanetSelected
-                ? this.renderVehicles(vehiclesData, 'vehicle4', 3)
-                : null}
-            </div>
+          <div className="form-elements">
+            <h1>Hellelujah</h1>
+            <div className="planets-container">
+              <div className="planets-options">
+                {this.renderPlanet1(planets, 0)}
+                {isFirstPlanetSelected
+                  ? this.renderVehicles(vehiclesData, 'vehicle1', 0)
+                  : null}
+              </div>
+              <div>
+                {this.renderPlanet2(planets, 1)}
+                {isSecondPlanetSelected
+                  ? this.renderVehicles(vehiclesData, 'vehicle2', 1)
+                  : null}
+              </div>
+              <div>
+                {this.renderPlanet3(planets, 2)}
+                {isThirdPlanetSelected
+                  ? this.renderVehicles(vehiclesData, 'vehicle3', 2)
+                  : null}
+              </div>
+              <div>
+                {this.renderPlanet4(planets, 3)}
+                {isFourthPlanetSelected
+                  ? this.renderVehicles(vehiclesData, 'vehicle4', 3)
+                  : null}
+              </div>
 
-            <span>Total time :{time}</span>
-          </div>
-          <div className="button-container">
-            <button>FindFalcone</button>
+              <span>Total time :{time}</span>
+            </div>
+            <div className="button-container">
+              <button>FindFalcone</button>
+            </div>
           </div>
         </form>
       </div>

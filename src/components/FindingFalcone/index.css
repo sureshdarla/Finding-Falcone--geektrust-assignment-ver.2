@@ -36,3 +36,8 @@
   font-family: 'Roboto';
   font-weight: 500;
 }
+.form-elements {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
